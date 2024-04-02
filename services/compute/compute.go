@@ -1160,3 +1160,12 @@ type ProxyConfiguration struct {
 	// Alternative CA cert to use for connecting to proxy server
 	TrustedCa *string `json:"trustedca,omitempty"`
 }
+
+type VirtualMachineDiscovery struct {
+	// VM unique ID
+	VmId *string `json:"vmId,omitempty"`
+	// Name
+	VmName *string `json:"vmName,omitempty"`
+	// PowerState of the VM
+	PowerState *string `json:"powerState,omitempty"`
+}

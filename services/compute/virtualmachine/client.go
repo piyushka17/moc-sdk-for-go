@@ -27,6 +27,7 @@ type Service interface {
 	RepairGuestAgent(context.Context, string, string) error
 	RunCommand(context.Context, string, string, *compute.VirtualMachineRunCommandRequest) (*compute.VirtualMachineRunCommandResponse, error)
 	Validate(context.Context, string, string) error
+	DiscoverVm(context.Context) (*[]compute.VirtualMachineDiscovery, error)
 }
 
 type VirtualMachineClient struct {
@@ -100,6 +101,28 @@ func (c *VirtualMachineClient) Pause(ctx context.Context, group string, name str
 func (c *VirtualMachineClient) Save(ctx context.Context, group string, name string) (err error) {
 	err = c.internal.Save(ctx, group, name)
 	return
+}
+
+func (c *VirtualMachineClient) DiscoverVm(ctx context.Context) (*[]compute.VirtualMachineDiscovery, error) {
+	vm1id := "vm-id1"
+	vm2id := "vm-id2"
+	vm1name := "vm1"
+	vm2name := "vm2"
+	vm1power := "Running"
+	vm2power := "Off"
+	response := []compute.VirtualMachineDiscovery{
+		{
+			VmId:       &vm1id,
+			VmName:     &vm1name,
+			PowerState: &vm1power,
+		},
+		{
+			VmId:       &vm2id,
+			VmName:     &vm2name,
+			PowerState: &vm2power,
+		},
+	}
+	return &response, nil
 }
 
 type UpdateFunctor interface {
