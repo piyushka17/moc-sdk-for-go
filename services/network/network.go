@@ -978,7 +978,7 @@ type PublicIPAddressPropertiesFormat struct {
 	// PublicIPPrefix - The Public IP Prefix this Public IP Address should be allocated from.
 	PublicIPPrefix *SubResource `json:"publicIPPrefix,omitempty"`
 	// IdleTimeoutInMinutes - The idle timeout of the public IP address.
-	IdleTimeoutInMinutes *int32 `json:"idleTimeoutInMinutes,omitempty"`
+	IdleTimeoutInMinutes *uint32 `json:"idleTimeoutInMinutes,omitempty"`
 	// ProvisioningState - The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 	ProvisioningState *string `json:"provisioningState,omitempty"`
 	// State - State
