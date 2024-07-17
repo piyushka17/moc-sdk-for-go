@@ -271,25 +271,25 @@ func getWssdNetworkSecurityGroupRules(securityRules *[]network.SecurityRule, isD
 			return nil, errors.Wrapf(errors.InvalidInput, "Unknown Protocol %s specified", rule.Protocol)
 		}
 
-		if rule.SourceAddressPrefix != nil {
+		if rule.SourceAddressPrefix != nil && len(*rule.SourceAddressPrefix) > 0 {
 			wssdCloudNSGRule.SourceAddressPrefix = *rule.SourceAddressPrefix
 		} else if rule.SourceAddressPrefixes != nil {
 			wssdCloudNSGRule.SourceAddressPrefix = strings.Join(*rule.SourceAddressPrefixes, ",")
 		}
 
-		if rule.DestinationAddressPrefix != nil {
+		if rule.DestinationAddressPrefix != nil && len(*rule.DestinationAddressPrefix) > 0 {
 			wssdCloudNSGRule.DestinationAddressPrefix = *rule.DestinationAddressPrefix
 		} else if rule.DestinationAddressPrefixes != nil {
 			wssdCloudNSGRule.DestinationAddressPrefix = strings.Join(*rule.DestinationAddressPrefixes, ",")
 		}
 
-		if rule.SourcePortRange != nil {
+		if rule.SourcePortRange != nil && len(*rule.SourcePortRange) > 0 {
 			wssdCloudNSGRule.SourcePortRange = *rule.SourcePortRange
 		} else if rule.SourcePortRanges != nil {
 			wssdCloudNSGRule.SourcePortRange = strings.Join(*rule.SourcePortRanges, ",")
 		}
 
-		if rule.DestinationPortRange != nil {
+		if rule.DestinationPortRange != nil && len(*rule.DestinationPortRange) > 0 {
 			wssdCloudNSGRule.DestinationPortRange = *rule.DestinationPortRange
 		} else if rule.DestinationPortRanges != nil {
 			wssdCloudNSGRule.DestinationPortRange = strings.Join(*rule.DestinationPortRanges, ",")
